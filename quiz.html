@@ -1,0 +1,1534 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How Well Do You Know Chidera?</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #F1E4C8;
+            color: #3E3424;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #800020;
+            color: #F1E4C8;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 44px;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #D9DFC0;
+        }
+
+        /* ================= INTRO ================= */
+
+        .intro {
+            text-align: center;
+            padding: 35px 20px 10px;
+        }
+
+        .intro h2 {
+            color: #800020;
+            font-size: 30px;
+        }
+
+        .intro p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ================= INSTRUCTIONS ================= */
+
+        .instructions {
+            width: 90%;
+            max-width: 850px;
+            margin: 25px auto;
+            background: #68723C;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .instructions strong {
+            color: #F1E4C8;
+        }
+
+        /* ================= QUIZ ================= */
+
+        .quiz {
+            width: 90%;
+            max-width: 850px;
+            margin: 30px auto;
+        }
+
+        .question {
+            background: #FFF9EA;
+            border-left: 7px solid #68723C;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .question-number {
+            color: #68723C;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .question h3 {
+            color: #800020;
+            font-size: 21px;
+            margin: 10px 0 20px;
+        }
+
+        /* ================= OPTIONS ================= */
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .options label {
+            display: block;
+            padding: 15px;
+            background: #F1E4C8;
+            border: 2px solid #C5B993;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 16px;
+        }
+
+        .options label:hover {
+            background: #D9DFC0;
+            border-color: #68723C;
+        }
+
+        .options input {
+            margin-right: 10px;
+            accent-color: #800020;
+        }
+
+        /* ================= FEEDBACK ================= */
+
+        .feedback {
+            display: none;
+            margin-top: 18px;
+            padding: 13px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .correct-feedback {
+            background: #D9DFC0;
+            color: #3D4A20;
+        }
+
+        .wrong-feedback {
+            background: #E8C9C9;
+            color: #800020;
+        }
+
+        /* ================= SUBMIT ================= */
+
+        .submit-container {
+            text-align: center;
+            margin: 45px 0;
+        }
+
+        .submit-btn {
+            background: #800020;
+            color: #F1E4C8;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #68723C;
+            transform: scale(1.04);
+        }
+
+        /* ================= RESULT ================= */
+
+        #result {
+            display: none;
+            width: 90%;
+            max-width: 850px;
+            margin: 45px auto;
+            background: #800020;
+            color: #F1E4C8;
+            padding: 45px 25px;
+            border-radius: 22px;
+            text-align: center;
+        }
+
+        #result h2 {
+            font-size: 35px;
+            margin-top: 0;
+        }
+
+        .final-score {
+            font-size: 60px;
+            font-weight: bold;
+            color: #D9DFC0;
+            margin: 15px 0;
+        }
+
+        #result-message {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #D9DFC0;
+            color: #800020;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .restart-btn:hover {
+            background: white;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 60px;
+            background: #68723C;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            header p {
+                font-size: 15px;
+            }
+
+            .question {
+                padding: 20px;
+            }
+
+            .question h3 {
+                font-size: 18px;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <h1>HOW WELL DO YOU KNOW CHIDERA?</h1>
+
+        <p>
+            Think you know her? Prove it! 👀
+        </p>
+
+    </header>
+
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="intro">
+
+        <h2>✨ The Ultimate Chidera Quiz ✨</h2>
+
+        <p>
+            How well do you REALLY know Chidera?
+            <br>
+            There is only one way to find out...
+            <br>
+            <strong>TAKE THE QUIZ! 🏆</strong>
+        </p>
+
+    </section>
+
+
+    <!-- ================= INSTRUCTIONS ================= -->
+
+    <div class="instructions">
+
+        <strong>⚠️ IMPORTANT!</strong>
+
+        <br>
+
+        Choose <strong>ONE answer</strong> for every question.
+
+        <br>
+
+        Your score will remain completely hidden until you click
+        <strong>SUBMIT QUIZ</strong>.
+
+        <br>
+
+        <strong>No cheating! 😂</strong>
+
+    </div>
+
+
+    <!-- ================= QUIZ ================= -->
+
+    <form id="quizForm" class="quiz">
+
+
+        <!-- QUESTION 1 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 1
+            </div>
+
+            <h3>
+                Gold or Silver?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q1" value="silver">
+                    Silver
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="gold">
+                    Gold
+                </label>
+
+            </div>
+
+            <div id="feedback1" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 2 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 2
+            </div>
+
+            <h3>
+                What does Chidera like to do with her free time?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q2" value="reading">
+                    Read
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="gaming">
+                    Play video games
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="shopping">
+                    Go shopping
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="sleeping">
+                    Sleep
+                </label>
+
+            </div>
+
+            <div id="feedback2" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 3 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 3
+            </div>
+
+            <h3>
+                What is Chidera's favourite ice cream flavour?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q3" value="chocolate">
+                    Chocolate
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="strawberryvanilla">
+                    Strawberry & Vanilla
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="mint">
+                    Mint
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="cookies">
+                    Cookies & Cream
+                </label>
+
+            </div>
+
+            <div id="feedback3" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 4 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 4
+            </div>
+
+            <h3>
+                Coke or Fanta?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q4" value="coke">
+                    Coke
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="fanta">
+                    Fanta
+                </label>
+
+            </div>
+
+            <div id="feedback4" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 5 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 5
+            </div>
+
+            <h3>
+                Chocolate or Milk?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q5" value="chocolate">
+                    Chocolate
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="milk">
+                    Milk
+                </label>
+
+            </div>
+
+            <div id="feedback5" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 6 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 6
+            </div>
+
+            <h3>
+                What is Chidera's favourite colour?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q6" value="black">
+                    Black
+                </label>
+
+                <label>
+                    <input type="radio" name="q6" value="blue">
+                    Blue
+                </label>
+
+                <label>
+                    <input type="radio" name="q6" value="pink">
+                    Pink
+                </label>
+
+                <label>
+                    <input type="radio" name="q6" value="purple">
+                    Purple
+                </label>
+
+            </div>
+
+            <div id="feedback6" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 7 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 7
+            </div>
+
+            <h3>
+                What is Chidera's favourite type of music?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q7" value="afrobeats">
+                    Afrobeats
+                </label>
+
+                <label>
+                    <input type="radio" name="q7" value="rock">
+                    Rock
+                </label>
+
+                <label>
+                    <input type="radio" name="q7" value="classical">
+                    Classical
+                </label>
+
+                <label>
+                    <input type="radio" name="q7" value="jazz">
+                    Jazz
+                </label>
+
+            </div>
+
+            <div id="feedback7" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 8 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 8
+            </div>
+
+            <h3>
+                What is the WORST type of music to Chidera?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q8" value="afrobeats">
+                    Afrobeats
+                </label>
+
+                <label>
+                    <input type="radio" name="q8" value="phonk-kpop">
+                    Phonk & K-pop
+                </label>
+
+                <label>
+                    <input type="radio" name="q8" value="rnb">
+                    R&B
+                </label>
+
+                <label>
+                    <input type="radio" name="q8" value="jazz">
+                    Jazz
+                </label>
+
+            </div>
+
+            <div id="feedback8" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 9 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 9
+            </div>
+
+            <h3>
+                What is Chidera's favourite fruit?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q9" value="grapes">
+                    Grapes
+                </label>
+
+                <label>
+                    <input type="radio" name="q9" value="mango">
+                    Mango
+                </label>
+
+                <label>
+                    <input type="radio" name="q9" value="apple">
+                    Apple
+                </label>
+
+                <label>
+                    <input type="radio" name="q9" value="watermelon">
+                    Watermelon
+                </label>
+
+            </div>
+
+            <div id="feedback9" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 10 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 10
+            </div>
+
+            <h3>
+                What is Chidera's worst nightmare?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q10" value="exam">
+                    Failing an exam
+                </label>
+
+                <label>
+                    <input type="radio" name="q10" value="losing-mum">
+                    Losing her mum
+                </label>
+
+                <label>
+                    <input type="radio" name="q10" value="school">
+                    Being late to school
+                </label>
+
+                <label>
+                    <input type="radio" name="q10" value="alone">
+                    Being alone
+                </label>
+
+            </div>
+
+            <div id="feedback10" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 11 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 11
+            </div>
+
+            <h3>
+                Books or Movies?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q11" value="books">
+                    Books
+                </label>
+
+                <label>
+                    <input type="radio" name="q11" value="movies">
+                    Movies
+                </label>
+
+            </div>
+
+            <div id="feedback11" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 12 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 12
+            </div>
+
+            <h3>
+                What is Chidera's worst type of movie?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q12" value="horror">
+                    Horror
+                </label>
+
+                <label>
+                    <input type="radio" name="q12" value="comedy">
+                    Comedy
+                </label>
+
+                <label>
+                    <input type="radio" name="q12" value="romance">
+                    Romance
+                </label>
+
+                <label>
+                    <input type="radio" name="q12" value="animation">
+                    Animation
+                </label>
+
+            </div>
+
+            <div id="feedback12" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 13 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 13
+            </div>
+
+            <h3>
+                Who is Chidera's favourite Nigerian author?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q13" value="chimamanda">
+                    Chimamanda Adichie
+                </label>
+
+                <label>
+                    <input type="radio" name="q13" value="achebe">
+                    Chinua Achebe
+                </label>
+
+                <label>
+                    <input type="radio" name="q13" value="soyinka">
+                    Wole Soyinka
+                </label>
+
+                <label>
+                    <input type="radio" name="q13" value="okri">
+                    Ben Okri
+                </label>
+
+            </div>
+
+            <div id="feedback13" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 14 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 14
+            </div>
+
+            <h3>
+                How tall is Chidera?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q14" value="5-2">
+                    5'2"
+                </label>
+
+                <label>
+                    <input type="radio" name="q14" value="5-4">
+                    5'4"
+                </label>
+
+                <label>
+                    <input type="radio" name="q14" value="5-5">
+                    5'5"
+                </label>
+
+                <label>
+                    <input type="radio" name="q14" value="5-7">
+                    5'7"
+                </label>
+
+            </div>
+
+            <div id="feedback14" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 15 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 15
+            </div>
+
+            <h3>
+                What is something Chidera takes seriously?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q15" value="academics">
+                    Academics / School
+                </label>
+
+                <label>
+                    <input type="radio" name="q15" value="fashion">
+                    Fashion
+                </label>
+
+                <label>
+                    <input type="radio" name="q15" value="parties">
+                    Parties
+                </label>
+
+                <label>
+                    <input type="radio" name="q15" value="games">
+                    Games
+                </label>
+
+            </div>
+
+            <div id="feedback15" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 16 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 16
+            </div>
+
+            <h3>
+                What is Chidera's dream career?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q16" value="doctor">
+                    Doctor
+                </label>
+
+                <label>
+                    <input type="radio" name="q16" value="judge">
+                    Judge
+                </label>
+
+                <label>
+                    <input type="radio" name="q16" value="engineer">
+                    Engineer
+                </label>
+
+                <label>
+                    <input type="radio" name="q16" value="designer">
+                    Fashion Designer
+                </label>
+
+            </div>
+
+            <div id="feedback16" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 17 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 17
+            </div>
+
+            <h3>
+                What is something Chidera is addicted to?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q17" value="food">
+                    Food
+                </label>
+
+                <label>
+                    <input type="radio" name="q17" value="books">
+                    Books
+                </label>
+
+                <label>
+                    <input type="radio" name="q17" value="you">
+                    You 😏
+                </label>
+
+                <label>
+                    <input type="radio" name="q17" value="music">
+                    Music
+                </label>
+
+            </div>
+
+            <div id="feedback17" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 18 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 18
+            </div>
+
+            <h3>
+                Cats or Dogs?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q18" value="cats">
+                    Cats
+                </label>
+
+                <label>
+                    <input type="radio" name="q18" value="dogs">
+                    Dogs
+                </label>
+
+                <label>
+                    <input type="radio" name="q18" value="none">
+                    None
+                </label>
+
+            </div>
+
+            <div id="feedback18" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 19 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 19
+            </div>
+
+            <h3>
+                What is Chidera's worst subject?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q19" value="maths">
+                    Maths
+                </label>
+
+                <label>
+                    <input type="radio" name="q19" value="english">
+                    English
+                </label>
+
+                <label>
+                    <input type="radio" name="q19" value="biology">
+                    Biology
+                </label>
+
+                <label>
+                    <input type="radio" name="q19" value="chemistry">
+                    Chemistry
+                </label>
+
+            </div>
+
+            <div id="feedback19" class="feedback"></div>
+
+        </div>
+
+
+        <!-- QUESTION 20 -->
+
+        <div class="question">
+
+            <div class="question-number">
+                QUESTION 20
+            </div>
+
+            <h3>
+                What is something that keeps Chidera up at night?
+            </h3>
+
+            <div class="options">
+
+                <label>
+                    <input type="radio" name="q20" value="school">
+                    School
+                </label>
+
+                <label>
+                    <input type="radio" name="q20" value="food">
+                    Food
+                </label>
+
+                <label>
+                    <input type="radio" name="q20" value="life">
+                    Her life
+                </label>
+
+                <label>
+                    <input type="radio" name="q20" value="movies">
+                    Movies
+                </label>
+
+            </div>
+
+            <div id="feedback20" class="feedback"></div>
+
+        </div>
+
+
+        <!-- ================= SUBMIT ================= -->
+
+        <div class="submit-container">
+
+            <button type="submit" class="submit-btn">
+                🏆 SUBMIT QUIZ
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <!-- ================= RESULT ================= -->
+
+    <section id="result">
+
+        <h2>
+            🎉 QUIZ COMPLETE! 🎉
+        </h2>
+
+        <p>
+            Your Chidera Knowledge Score is:
+        </p>
+
+        <div class="final-score">
+            <span id="finalScore">0</span>/20
+        </div>
+
+        <p id="result-message"></p>
+
+        <button class="restart-btn" type="button" onclick="restartQuiz()">
+            🔄 TRY AGAIN
+        </button>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            Made with ❤️ for Chidera
+        </p>
+
+        <p>
+            How well do you REALLY know her? 👀
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ==========================================
+           CORRECT ANSWERS
+           ========================================== */
+
+        const correctAnswers = {
+
+            q1: "gold",
+
+            q2: "reading",
+
+            q3: "strawberryvanilla",
+
+            q4: "coke",
+
+            q5: "milk",
+
+            q6: "black",
+
+            q7: "afrobeats",
+
+            q8: "phonk-kpop",
+
+            q9: "grapes",
+
+            q10: "losing-mum",
+
+            q11: "books",
+
+            q12: "horror",
+
+            q13: "chimamanda",
+
+            q14: "5-5",
+
+            q15: "academics",
+
+            q16: "judge",
+
+            q17: "you",
+
+            q18: "none",
+
+            q19: "maths",
+
+            q20: "life"
+
+        };
+
+
+        /* ==========================================
+           CORRECT ANSWER TEXT
+           ========================================== */
+
+        const correctAnswerNames = {
+
+            q1: "Gold",
+
+            q2: "Read",
+
+            q3: "Strawberry & Vanilla",
+
+            q4: "Coke",
+
+            q5: "Milk",
+
+            q6: "Black",
+
+            q7: "Afrobeats",
+
+            q8: "Phonk & K-pop",
+
+            q9: "Grapes",
+
+            q10: "Losing her mum",
+
+            q11: "Books",
+
+            q12: "Horror",
+
+            q13: "Chimamanda Adichie",
+
+            q14: "5'5\"",
+
+            q15: "Academics / School",
+
+            q16: "Judge",
+
+            q17: "You 😏",
+
+            q18: "None",
+
+            q19: "Maths",
+
+            q20: "Her life"
+
+        };
+
+
+        /* ==========================================
+           SUBMIT QUIZ
+           ========================================== */
+
+        document.getElementById("quizForm").addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                let score = 0;
+
+
+                /* Check every question */
+
+                for (let i = 1; i <= 20; i++) {
+
+                    const questionName = "q" + i;
+
+                    const selected = document.querySelector(
+                        'input[name="' +
+                        questionName +
+                        '"]:checked'
+                    );
+
+                    const feedback =
+                        document.getElementById(
+                            "feedback" + i
+                        );
+
+
+                    /* If question wasn't answered */
+
+                    if (!selected) {
+
+                        feedback.style.display = "block";
+
+                        feedback.className =
+                            "feedback wrong-feedback";
+
+                        feedback.textContent =
+                            "⚠️ You didn't answer this question. " +
+                            "Correct answer: " +
+                            correctAnswerNames[questionName];
+
+                    }
+
+
+                    /* If answer is correct */
+
+                    else if (
+                        selected.value ===
+                        correctAnswers[questionName]
+                    ) {
+
+                        score++;
+
+                        feedback.style.display = "block";
+
+                        feedback.className =
+                            "feedback correct-feedback";
+
+                        feedback.textContent =
+                            "✅ Correct!";
+
+                    }
+
+
+                    /* If answer is wrong */
+
+                    else {
+
+                        feedback.style.display = "block";
+
+                        feedback.className =
+                            "feedback wrong-feedback";
+
+                        feedback.textContent =
+                            "❌ Wrong! Correct answer: " +
+                            correctAnswerNames[questionName];
+
+                    }
+
+                }
+
+
+                /* ==========================================
+                   DISPLAY THE ACTUAL SCORE
+                   ========================================== */
+
+                document.getElementById(
+                    "finalScore"
+                ).textContent = score;
+
+
+                /* ==========================================
+                   PERSONALIZED SCORE MESSAGE
+                   ========================================== */
+
+                let message;
+
+
+                if (score === 20) {
+
+                    message =
+                        "👑 PERFECT SCORE! You know Chidera " +
+                        "INSANELY well! You basically ARE Chidera!";
+
+                }
+
+                else if (score >= 17) {
+
+                    message =
+                        "🔥 AMAZING! You know Chidera REALLY well!";
+
+                }
+
+                else if (score >= 14) {
+
+                    message =
+                        "💚 Very impressive! You definitely know " +
+                        "your Chidera facts!";
+
+                }
+
+                else if (score >= 10) {
+
+                    message =
+                        "😌 Not bad! You know quite a lot about Chidera.";
+
+                }
+
+                else if (score >= 6) {
+
+                    message =
+                        "😂 Hmm... you still have some serious " +
+                        "Chidera studying to do!";
+
+                }
+
+                else {
+
+                    message =
+                        "😭 HOW DO YOU KNOW SO LITTLE ABOUT CHIDERA?!";
+
+                }
+
+
+                document.getElementById(
+                    "result-message"
+                ).textContent = message;
+
+
+                /* ==========================================
+                   SHOW RESULT
+                   ========================================== */
+
+                document.getElementById(
+                    "result"
+                ).style.display = "block";
+
+
+                /* Scroll to result */
+
+                document.getElementById(
+                    "result"
+                ).scrollIntoView({
+                    behavior: "smooth"
+                });
+
+
+                /* Disable changing answers after submission */
+
+                const allInputs =
+                    document.querySelectorAll(
+                        "#quizForm input"
+                    );
+
+                allInputs.forEach(function(input) {
+
+                    input.disabled = true;
+
+                });
+
+
+                /* Disable submit button */
+
+                document.querySelector(
+                    ".submit-btn"
+                ).disabled = true;
+
+                document.querySelector(
+                    ".submit-btn"
+                ).style.opacity = "0.6";
+
+                document.querySelector(
+                    ".submit-btn"
+                ).style.cursor = "not-allowed";
+
+            }
+        );
+
+
+        /* ==========================================
+           RESTART QUIZ
+           ========================================== */
+
+        function restartQuiz() {
+
+            /* Reset all answers */
+
+            document.getElementById(
+                "quizForm"
+            ).reset();
+
+
+            /* Hide result */
+
+            document.getElementById(
+                "result"
+            ).style.display = "none";
+
+
+            /* Hide feedback */
+
+            for (let i = 1; i <= 20; i++) {
+
+                const feedback =
+                    document.getElementById(
+                        "feedback" + i
+                    );
+
+                feedback.style.display = "none";
+
+                feedback.textContent = "";
+
+            }
+
+
+            /* Enable inputs again */
+
+            const allInputs =
+                document.querySelectorAll(
+                    "#quizForm input"
+                );
+
+            allInputs.forEach(function(input) {
+
+                input.disabled = false;
+
+            });
+
+
+            /* Enable submit button */
+
+            const submitButton =
+                document.querySelector(
+                    ".submit-btn"
+                );
+
+            submitButton.disabled = false;
+
+            submitButton.style.opacity = "1";
+
+            submitButton.style.cursor = "pointer";
+
+
+            /* Return to top */
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
